@@ -36,7 +36,7 @@ class OptimConfig:
     # Seed for experiment
     seed: int = 0
     # Total iters
-    iters: int = 5000
+    iters: int = 100
     # Learning rate
     lr: float = 1e-3
     # use amp mixed precision training
@@ -57,7 +57,7 @@ class LogConfig:
     # Experiment output dir
     exp_root: Path = Path('experiments/')
     # How many steps between save step
-    save_interval: int = 5000
+    save_interval: int = 100
     # Run only test
     eval_only: bool = False
     # Number of angles to sample for eval during training
