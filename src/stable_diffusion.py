@@ -1,7 +1,7 @@
 from huggingface_hub import hf_hub_download
 from torchvision import transforms
 from transformers import CLIPTextModel, CLIPTokenizer, CLIPVisionModel,logging,CLIPProcessor
-from diffusers import AutoencoderKL, UNet2DConditionModel, PNDMScheduler
+from diffusers import AutoencoderKL, UNet2DConditionModel, PNDMScheduler,  DEISMultistepScheduler
 
 # suppress partial model loading warning
 logging.set_verbosity_error()
@@ -47,7 +47,7 @@ class StableDiffusion(nn.Module):
         self.unet = UNet2DConditionModel.from_pretrained(model_name, subfolder="unet", use_auth_token=self.token).to(self.device)
 
         # 4. Create a scheduler for inference
-        self.scheduler = PNDMScheduler(beta_start=0.00085, beta_end=0.012, beta_schedule="scaled_linear", num_train_timesteps=self.num_train_timesteps)
+        self.scheduler = DEISMultistepScheduler(beta_start=0.00085, beta_end=0.012, beta_schedule="scaled_linear", num_train_timesteps=self.num_train_timesteps)
         self.alphas = self.scheduler.alphas_cumprod.to(self.device) # for convenience
 
         if concept_name is not None:
