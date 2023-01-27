@@ -1,7 +1,7 @@
 torch==1.12.1
 torchvision==0.13.1
 transformers
-git+https://github.com/HazyResearch/diffusers@master#egg=diffusers
+git+https://github.com/HazyResearch/diffusers@main#egg=diffusers
 accelerate
 huggingface-hub
 ninja
