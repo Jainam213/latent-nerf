@@ -213,7 +213,7 @@ class StableDiffusion(nn.Module):
 
         return latents
 
-    def prompt_to_img(self, prompts, height=512, width=512, num_inference_steps=50, guidance_scale=7.5, latents=None):
+    def prompt_to_img(self, prompts, height=512, width=512, num_inference_steps=20, guidance_scale=7.5, latents=None):
 
         if isinstance(prompts, str):
             prompts = [prompts]
@@ -243,7 +243,7 @@ if __name__ == '__main__':
     parser.add_argument('prompt', type=str)
     parser.add_argument('-H', type=int, default=512)
     parser.add_argument('-W', type=int, default=512)
-    parser.add_argument('--steps', type=int, default=50)
+    parser.add_argument('--steps', type=int, default=20)
     opt = parser.parse_args()
 
     device = torch.device('cuda')
