@@ -167,7 +167,7 @@ class StableDiffusion(nn.Module):
 
         return 0 # dummy loss value
 
-    def produce_latents(self, text_embeddings, height=512, width=512, num_inference_steps=50, guidance_scale=7.5, latents=None):
+    def produce_latents(self, text_embeddings, height=512, width=512, num_inference_steps=20, guidance_scale=7.5, latents=None):
 
         if latents is None:
             latents = torch.randn((text_embeddings.shape[0] // 2, self.unet.in_channels, height // 8, width // 8), device=self.device)
