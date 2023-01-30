@@ -27,7 +27,7 @@ class StableDiffusion(nn.Module):
 
         self.device = device
         self.latent_mode = latent_mode
-        self.num_train_timesteps = 500
+        self.num_train_timesteps = 1000
         self.min_step = int(self.num_train_timesteps * 0.02)
         self.max_step = int(self.num_train_timesteps * 0.98)
 
@@ -47,19 +47,19 @@ class StableDiffusion(nn.Module):
         self.unet = UNet2DConditionModel.from_pretrained(model_name, subfolder="unet", use_auth_token=self.token).to(self.device)
 
         # 4. Create a scheduler for inference
-        self.scheduler = DEISMultistepScheduler( num_train_timesteps: int = 1000,
-        beta_start: float = 0.0001,
-        beta_end: float = 0.02,
-        beta_schedule: str = "linear",
-        trained_betas: Optional[np.ndarray] = None,
-        solver_order: int = 2,
-        prediction_type: str = "epsilon",
-        thresholding: bool = False,
-        dynamic_thresholding_ratio: float = 0.995,
-        sample_max_value: float = 1.0,
-        algorithm_type: str = "deis",
-        solver_type: str = "logrho",
-        lower_order_final: bool = True)
+        self.scheduler = DEISMultistepScheduler( num_train_timesteps= 1000,
+        beta_start=0.0001,
+        beta_end = 0.02,
+        beta_schedule= "linear",
+        trained_betas= None,
+        solver_ordert = 2,
+        prediction_type = "epsilon",
+        thresholding = False,
+        dynamic_thresholding_ratio = 0.995,
+        sample_max_value= 1.0,
+        algorithm_type = "deis",
+        solver_type = "logrho",
+        lower_order_final = True,)
         
         self.alphas = self.scheduler.alphas_cumprod.to(self.device) # for convenience
 
