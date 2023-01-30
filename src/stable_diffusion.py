@@ -59,7 +59,7 @@ class StableDiffusion(nn.Module):
         sample_max_value= 1.0,
         algorithm_type = "deis",
         solver_type = "logrho",
-        lower_order_final = True,)
+        lower_order_final = True)
         
         self.alphas = self.scheduler.alphas_cumprod.to(self.device) # for convenience
 
