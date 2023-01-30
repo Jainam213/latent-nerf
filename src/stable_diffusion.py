@@ -47,19 +47,7 @@ class StableDiffusion(nn.Module):
         self.unet = UNet2DConditionModel.from_pretrained(model_name, subfolder="unet", use_auth_token=self.token).to(self.device)
 
         # 4. Create a scheduler for inference
-        self.scheduler = DEISMultistepScheduler( num_train_timesteps= 1000,
-        beta_start=0.0001,
-        beta_end = 0.02,
-        beta_schedule= "linear",
-        trained_betas= None,
-        solver_order = 2,
-        prediction_type = "epsilon",
-        thresholding = False,
-        dynamic_thresholding_ratio = 0.995,
-        sample_max_value= 1.0,
-        algorithm_type = "deis",
-        solver_type = "logrho",
-        lower_order_final = True)
+        self.scheduler = DEISMultistepScheduler(beta_start=0.00085, beta_end=0.012, beta_schedule="scaled_linear", num_train_timesteps=self.num_train_timesteps)
         
         self.alphas = self.scheduler.alphas_cumprod.to(self.device) # for convenience
 
