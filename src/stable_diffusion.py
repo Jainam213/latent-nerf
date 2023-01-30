@@ -52,7 +52,7 @@ class StableDiffusion(nn.Module):
         beta_end = 0.02,
         beta_schedule= "linear",
         trained_betas= None,
-        solver_ordert = 2,
+        solver_order = 2,
         prediction_type = "epsilon",
         thresholding = False,
         dynamic_thresholding_ratio = 0.995,
