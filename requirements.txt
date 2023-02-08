@@ -12,3 +12,4 @@ pyrallis
 loguru
 tqdm
 imageio_ffmpeg
+flash-attn
