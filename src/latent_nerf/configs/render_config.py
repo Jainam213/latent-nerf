@@ -24,13 +24,13 @@ class RenderConfig:
     # threshold for density grid to be occupied
     density_thresh: float = 10
     # Render width for training
-    train_w: int = 64
+    train_w: int = 128
     # Render height for training
-    train_h: int = 64
+    train_h: int = 128
     # Render width for inference
-    eval_w: int = 128
+    eval_w: int = 256
     # Render height for inference
-    eval_h: int = 128
+    eval_h: int = 256
     # Whether to randomly jitter sampled camera
     jitter_pose: bool = False
     # Assume the scene is bounded in box(-bound,bount)
